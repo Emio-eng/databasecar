@@ -16,31 +16,29 @@ import com.packt.cardatabase.domain.OwnerRepository;
 public class CardatabaseApplication {
 	@Autowired
 	private CarRepository repository;
-	
+
 	@Autowired
 	private OwnerRepository orepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(CardatabaseApplication.class, args);
 	}
+
 	@Bean
 	CommandLineRunner runner() {
-		return args ->{
+		return args -> {
 			Owner owner1 = new Owner("Jamuelton", "Angelim");
 			Owner owner2 = new Owner("Ronald", "Macario");
 			orepository.save(owner1);
 			orepository.save(owner2);
 			repository.save(new Car(
-					"Ford", "Ka", "vermelho", "ADF-1121", 2017, 42000,owner1)
-					);
+					"Ford", "Ka", "vermelho", "ADF-1121", 2017, 42000, owner1));
 			repository.save(new Car(
-					"Honda", "Civic", "preto", "ADS-5351", 1997, 15000,owner1)
-					);
+					"Honda", "Civic", "preto", "ADS-5351", 1997, 15000, owner1));
 			repository.save(new Car(
-					"Toyota", "Corolla", "prata", "FTP-2839", 1994, 13000,owner2)
-					);
+					"Toyota", "Corolla", "prata", "FTP-2839", 1994, 13000, owner2));
 		};
-				
+
 	}
-	
 
 }
